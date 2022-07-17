@@ -27227,13 +27227,44 @@ var _reactDefault = parcelHelpers.interopDefault(_react);
 var _movieCard = require("../movie-card/movie-card");
 var _movieView = require("../movie-view/movie-view");
 class MainView extends (0, _reactDefault.default).Component {
+    constructor(){
+        super();
+        this.state = {
+            movies: [
+                {
+                    _id: 1,
+                    Title: "Inception",
+                    Description: "desc1...",
+                    ImagePath: "..."
+                },
+                {
+                    _id: 2,
+                    Title: "The Shawshank Redemption",
+                    Description: "desc2...",
+                    ImagePath: "..."
+                },
+                {
+                    _id: 3,
+                    Title: "Gladiator",
+                    Description: "desc3...",
+                    ImagePath: "..."
+                }, 
+            ],
+            selectedMovie: null
+        };
+    }
+    setSelectedMovie(newSelectedMovie) {
+        this.setState({
+            selectedMovie: newSelectedMovie
+        });
+    }
     render() {
         const { movies , selectedMovie  } = this.state;
         if (selectedMovie) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieView.MovieView), {
             movie: selectedMovie
         }, void 0, false, {
             fileName: "src/components/main-view/main-view.jsx",
-            lineNumber: 9,
+            lineNumber: 42,
             columnNumber: 31
         }, this);
         if (movies.length === 0) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -27241,36 +27272,24 @@ class MainView extends (0, _reactDefault.default).Component {
             children: "The list is empty!"
         }, void 0, false, {
             fileName: "src/components/main-view/main-view.jsx",
-            lineNumber: 12,
+            lineNumber: 45,
             columnNumber: 14
         }, this);
         return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
             className: "main-view",
-            children: [
-                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
-                    onClick: ()=>{
-                        alert("Nice!");
-                    },
-                    children: "Click me!"
-                }, void 0, false, {
+            children: movies.map((movie1)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieCard.MovieCard), {
+                    movie: movie1,
+                    onMovieClick: (movie)=>{
+                        this.setSelectedMovie(movie);
+                    }
+                }, movie1._id, false, {
                     fileName: "src/components/main-view/main-view.jsx",
-                    lineNumber: 16,
-                    columnNumber: 9
-                }, this),
-                movies.map((movie)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieCard.MovieCard), {
-                        movie: movie,
-                        onClick: ()=>{
-                            this.state.selectedMovie = movie;
-                        }
-                    }, movie._id, false, {
-                        fileName: "src/components/main-view/main-view.jsx",
-                        lineNumber: 24,
-                        columnNumber: 11
-                    }, this))
-            ]
-        }, void 0, true, {
+                    lineNumber: 50,
+                    columnNumber: 11
+                }, this))
+        }, void 0, false, {
             fileName: "src/components/main-view/main-view.jsx",
-            lineNumber: 15,
+            lineNumber: 48,
             columnNumber: 7
         }, this);
     }
@@ -27296,14 +27315,40 @@ var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
 class MovieCard extends (0, _reactDefault.default).Component {
     render() {
-        const { movie  } = this.props;
-        return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-            className: "movie-card",
-            children: movie.Title
+        const { movies , selectedMovie  } = this.state;
+        if (selectedMovie) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(MovieView, {
+            movie: selectedMovie
         }, void 0, false, {
             fileName: "src/components/movie-card/movie-card.jsx",
-            lineNumber: 6,
-            columnNumber: 12
+            lineNumber: 7,
+            columnNumber: 31
+        }, this);
+        if (movies.length === 0) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+            className: "main-view",
+            children: "The list is empty!"
+        }, void 0, false, {
+            fileName: "src/components/movie-card/movie-card.jsx",
+            lineNumber: 10,
+            columnNumber: 14
+        }, this);
+        return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+            className: "main-view",
+            children: movies.map((movie)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(MovieCard, {
+                    movie: movie,
+                    onMovieClick: (newSelectedMovie)=>{
+                        this.setState({
+                            selectedMovie: newSelectedMovie
+                        });
+                    }
+                }, movie._id, false, {
+                    fileName: "src/components/movie-card/movie-card.jsx",
+                    lineNumber: 15,
+                    columnNumber: 11
+                }, this))
+        }, void 0, false, {
+            fileName: "src/components/movie-card/movie-card.jsx",
+            lineNumber: 13,
+            columnNumber: 7
         }, this);
     }
 }
@@ -27394,6 +27439,13 @@ class MovieView extends (0, _reactDefault.default).Component {
                 }, void 0, true, {
                     fileName: "src/components/movie-view/movie-view.jsx",
                     lineNumber: 16,
+                    columnNumber: 9
+                }, this),
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                    children: "Back"
+                }, void 0, false, {
+                    fileName: "src/components/movie-view/movie-view.jsx",
+                    lineNumber: 20,
                     columnNumber: 9
                 }, this)
             ]

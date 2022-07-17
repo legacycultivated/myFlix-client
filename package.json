@@ -4,7 +4,10 @@
   "description": "",
   "source": "src/index.html",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "parcel",
+    "watch": "parcel watch",
+    "build": "parcel build"
   },
   "repository": {
     "type": "git",
@@ -17,7 +20,9 @@
   },
   "homepage": "https://github.com/legacycultivated/myFlix-client#readme",
   "devDependencies": {
-    "parcel": "^2.6.2"
+    "@parcel/transformer-sass": "^2.6.2",
+    "parcel": "^2.6.2",
+    "process": "^0.11.10"
   },
   "dependencies": {
     "react": "^18.2.0",

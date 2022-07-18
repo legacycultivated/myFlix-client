@@ -27322,39 +27322,14 @@ var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
 class MovieCard extends (0, _reactDefault.default).Component {
     render() {
-        const { movies , selectedMovie  } = this.state;
-        if (selectedMovie) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(MovieView, {
-            movie: selectedMovie
-        }, void 0, false, {
-            fileName: "src/components/movie-card/movie-card.jsx",
-            lineNumber: 7,
-            columnNumber: 31
-        }, this);
-        if (movies.length === 0) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-            className: "main-view",
-            children: "The list is empty!"
-        }, void 0, false, {
-            fileName: "src/components/movie-card/movie-card.jsx",
-            lineNumber: 10,
-            columnNumber: 14
-        }, this);
+        const { movie , onMovieClick  } = this.props;
         return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-            className: "main-view",
-            children: movies.map((movie)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(MovieCard, {
-                    movie: movie,
-                    onMovieClick: (newSelectedMovie)=>{
-                        this.setState({
-                            selectedMovie: newSelectedMovie
-                        });
-                    }
-                }, movie._id, false, {
-                    fileName: "src/components/movie-card/movie-card.jsx",
-                    lineNumber: 15,
-                    columnNumber: 11
-                }, this))
+            onClick: ()=>onMovieClick(movie),
+            className: "movie-card",
+            children: movie.Title
         }, void 0, false, {
             fileName: "src/components/movie-card/movie-card.jsx",
-            lineNumber: 13,
+            lineNumber: 8,
             columnNumber: 7
         }, this);
     }

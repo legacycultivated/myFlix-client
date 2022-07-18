@@ -13,7 +13,7 @@ export class MainView extends React.Component {
       movies: [],
       selectedMovie: null,
       user: null,
-      registered: null,
+      isRegistered: true,
     };
   }
   componentDidMount() {
@@ -29,40 +29,39 @@ export class MainView extends React.Component {
       });
   }
 
-  setSelectedMovie(newSelectedMovie) {
-    this.setState({
-      selectedMovie: newSelectedMovie,
-    });
-  }
+  setSelectedMovie = (movie) => {
+    this.setState({ selectedMovie: movie });
+  };
 
-  /* When a user successfully logs in, this function updates the `user` property in state to that *particular user*/
+  onLoggedIn = (user) => {
+    this.setState({ user });
+  };
 
-  onLoggedIn(user) {
-    this.setState({
-      user,
-    });
-  }
-
-  onRegistration(registered) {
-    this.setState({
-      registered,
-    });
-  }
+  setRegistered = (value) => {
+    this.setState({ isRegistered: value });
+  };
 
   render() {
-    const { movies, selectedMovie, user } = this.state;
+    const { movies, selectedMovie, user, isRegistered } = this.state;
 
-    /* If there is no user, the LoginView is rendered. If there is a user logged in, the user details are *passed as a prop to the LoginView*/
-    if (!user)
-      return <LoginView onLoggedIn={(user) => this.onLoggedIn(user)} />;
-
-    if (!registered)
+    // If user is not registered, render RegistrationView
+    if (!isRegistered)
       return (
         <RegistrationView
-          onRegistration={(register) => this.onRegistration(register)}
+          onLoggedIn={(user) => this.onLoggedIn(user)}
+          setRegistered={this.setRegistered}
         />
       );
 
+    // If there's no user, the LoginView is rendered.
+    // If there's a user logged in, the user details are passed as a prop to LoginView
+    if (!user)
+      return (
+        <LoginView
+          onLoggedIn={(user) => this.onLoggedIn(user)}
+          setRegistered={this.setRegistered}
+        />
+      );
     if (selectedMovie)
       return (
         <MovieView

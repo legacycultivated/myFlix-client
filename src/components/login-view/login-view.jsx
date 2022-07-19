@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import axios from "axios";
 import PropTypes from "prop-types";
 
 export function LoginView(props) {
@@ -9,8 +8,6 @@ export function LoginView(props) {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(username, password);
-    /* Send a request to the server for authentication */
-    /* then call props.onLoggedIn(username) */
     props.onLoggedIn(username);
   };
 
@@ -35,14 +32,20 @@ export function LoginView(props) {
       <button type="submit" onClick={handleSubmit}>
         Submit
       </button>
+      <button
+      // onClick={() => {
+      //   this.setState({isRegistered: false});
+      // }}
+      >
+        Register Here
+      </button>
     </form>
   );
 }
 
 LoginView.propTypes = {
-  user: PropTypes.shape({
+  user: PropTypes.exact({
     username: PropTypes.string.isRequired,
     password: PropTypes.string.isRequired,
-  }),
-  onLoggedIn: PropTypes.func.isRequired,
+  }).isRequired,
 };

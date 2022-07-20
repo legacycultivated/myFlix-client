@@ -9,6 +9,7 @@ import {
   Col,
   Row,
 } from "react-bootstrap";
+import axios from "axios";
 
 import "./registration-view.scss";
 
@@ -17,6 +18,12 @@ export function RegistrationView(props) {
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
   const [birthday, setBirthday] = useState("");
+
+  const [values, setValues] = useState({
+    usernameErr: "",
+    passwordErr: "",
+    emailErr: "",
+  });
 
   const handleSubmit = (e) => {
     e.preventDefault();

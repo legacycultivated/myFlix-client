@@ -1,5 +1,8 @@
 import React from "react";
 import { Button, Container, Col, Row } from "react-bootstrap";
+import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
+import axios from "axios";
 
 import "./movie-view.scss";
 export class MovieView extends React.Component {
@@ -21,15 +24,14 @@ export class MovieView extends React.Component {
           <Col className="label">Description: </Col>
           <Col className="value">{movie.Description}</Col>
         </Row>
-        <Row className="movie-description">
-          <Col className="label">Genre: </Col>
-          <Col className="value">{movie.Genre.Name}</Col>
+        <Row>
+          <Link to={`/directors/${movie.Director.Name}`}>
+            <Button variant="link">Director</Button>
+          </Link>
+          <Link to={`/genres/${movie.Genre.Name}`}>
+            <Button variant="link">Genre</Button>
+          </Link>
         </Row>
-        <Row className="movie-description">
-          <Col className="label">Director: </Col>
-          <Col className="value">{movie.Director.Name}</Col>
-        </Row>
-
         <Button
           onClick={() => {
             onBackClick(null);

@@ -64,54 +64,46 @@ export class MainView extends React.Component {
   }
 
   render() {
-    const { movies, selectedMovie, user, registered } = this.state;
+    const { movies, user } = this.state;
 
-    /* If there is no user, the LoginView is rendered. If there is a user logged in, the user details are *passed as a prop to the LoginView*/
     if (!user)
-      return <LoginView onLoggedIn={(user) => this.onLoggedIn(user)} />;
-
-    if (!registered)
       return (
-        <RegistrationView
-          onRegistration={(register) => this.onRegistration(register)}
-        />
+        <Row>
+          <Col>
+            <LoginView onLoggedIn={(user) => this.onLoggedIn(user)} />
+          </Col>
+        </Row>
       );
-    if (selectedMovie)
-      return (
-        <MovieView
-          movie={selectedMovie}
-          onBackClick={(newSelectedMovie) => {
-            this.setSelectedMovie(newSelectedMovie);
-          }}
-        />
-      );
-    // Before the movies have been loaded
     if (movies.length === 0) return <div className="main-view" />;
 
     return (
-      <Row className="main-view justify-content-md-center">
-        {selectedMovie ? (
-          <Col md={8}>
-            <MovieView
-              movie={selectedMovie}
-              onBackClick={(newSelectedMovie) => {
-                this.setSelectedMovie(newSelectedMovie);
-              }}
-            />
-          </Col>
-        ) : (
-          movies.map((movie) => (
-            <Col lg={3} md={4} sm={12} key={movie._id}>
-              <MovieCard
-                movie={movie}
-                onMovieClick={(newSelectedMovie) => {
-                  this.setSelectedMovie(newSelectedMovie);
-                }}
-              />
-            </Col>
-          ))
-        )}
-      </Row>
+      <Router>
+        <Row className="main-view justify-content-md-center">
+          <Route
+            exact
+            path="/"
+            render={() => {
+              return movies.map((m) => (
+                <Col lg={3} md={4} sm={12} key={m._id}>
+                  <MovieCard movie={m} />
+                </Col>
+              ));
+            }}
+          />
+          <Route
+            path="/movies/:movieId"
+            render={({ match }) => {
+              return (
+                <Col md={8}>
+                  <MovieView
+                    movie={movies.find((m) => m._id === match.params.movieId)}
+                  />
+                </Col>
+              );
+            }}
+          />
+        </Row>
+      </Router>
     );
   }
 }

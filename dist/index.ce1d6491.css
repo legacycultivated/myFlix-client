@@ -2,4 +2,21 @@
   color: #4682b4;
 }
 
+.container {
+  background-color: #9a9494;
+}
+
+.card-body {
+  background-color: #cecaca;
+  padding-top: 5px;
+}
+
+.movie-poster {
+  justify-content: center;
+  margin-bottom: 15px;
+  display: flex;
+}
+
+
+
 /*# sourceMappingURL=index.ce1d6491.css.map */

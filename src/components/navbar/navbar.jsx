@@ -4,7 +4,7 @@ import { Container, Navbar, Nav, Button } from "react-bootstrap";
 
 import "./navbar.scss";
 
-export function Menu({ user }) {
+export function Navbar({ user }) {
   const onLoggedOut = () => {
     localStorage.clear();
     window.open("/", "_self");
@@ -24,7 +24,7 @@ export function Menu({ user }) {
   return (
     <Navbar className="main-nav" expand="lg">
       {/* <Container> */}
-      <Navbar.Brand className="text-light">SwagFlix</Navbar.Brand>
+      <Navbar.Brand className="text-light">myFlix2022</Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="ml-auto">

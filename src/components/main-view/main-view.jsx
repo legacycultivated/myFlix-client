@@ -47,12 +47,6 @@ export class MainView extends React.Component {
     this.getMovies(authData.token);
   }
 
-  onRegistration(registered) {
-    this.setState({
-      registered,
-    });
-  }
-
   getMovies(token) {
     axios
       .get("https://myflix2022.herokuapp.com/movies", {

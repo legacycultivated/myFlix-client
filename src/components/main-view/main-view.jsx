@@ -2,6 +2,7 @@ import React from "react";
 import axios from "axios";
 import { BrowserRouter as Router, Redirect, Route } from "react-router-dom";
 
+import { Navbar } from "../navbar/navbar";
 import { LoginView } from "../login-view/login-view";
 import { RegistrationView } from "../registration-view/registration-view";
 import { MovieCard } from "../movie-card/movie-card";
@@ -13,7 +14,6 @@ export class MainView extends React.Component {
     super();
     this.state = {
       movies: [],
-      selectedMovie: null,
       user: null,
     };
   }
@@ -61,6 +61,7 @@ export class MainView extends React.Component {
 
     return (
       <Router>
+        <Navbar user={user} />
         <Container fluid>
           <Row className="main-view justify-content-md-center">
             <Route

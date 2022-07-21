@@ -45,7 +45,7 @@ export class MainView extends React.Component {
   getMovies(token) {
     axios
       .get("https://myflix2022.herokuapp.com/movies", {
-        headers: { Authorization: `Bearer${token}` },
+        headers: { Authorization: `Bearer ${token}` },
       })
       .then((response) => {
         // Assign the result to the state

@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 import "./profile-view.scss";
 
-import { Container, Row, Button, Card, Form } from "react-bootstrap";
+import { Container, Row, Button, Card, Form, Col } from "react-bootstrap";
 
 export function ProfileView(props) {
   const [username, setUsername] = useState("");
@@ -143,12 +143,16 @@ export function ProfileView(props) {
         <Card.Body>
           {favoriteMoviesList.map((movie) => {
             return (
-              <div key={movie._id}>
-                <img src={movie.ImagePath} alt={movie.Title} />
-                <Link to={`/movies/${movie._id}`}>
-                  <h4>{movie.Title}</h4>
-                </Link>
-              </div>
+              <Container>
+                <Col>
+                  <Row>
+                    <img src={movie.ImagePath} alt={movie.Title} />
+                    <Link key={movie._id} to={`/movies/${movie._id}`}>
+                      <h4 key={movie._id}>{movie.Title}</h4>
+                    </Link>
+                  </Row>
+                </Col>
+              </Container>
             );
           })}
         </Card.Body>

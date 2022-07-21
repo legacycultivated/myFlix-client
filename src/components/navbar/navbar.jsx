@@ -40,12 +40,7 @@ export function Navbar({ user }) {
             {isAuth() && <Nav.Link href={`/users/${user}`}>{user}</Nav.Link>}
 
             {isAuth() && (
-              <Button
-                variant="link"
-                onClick={() => {
-                  this.onLoggedOut();
-                }}
-              >
+              <Button variant="link" onClick={onLoggedOut}>
                 Logout
               </Button>
             )}

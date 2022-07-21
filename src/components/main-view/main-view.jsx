@@ -3,6 +3,7 @@ import axios from "axios";
 import { BrowserRouter as Router, Redirect, Route } from "react-router-dom";
 
 import { Navbar } from "../navbar/navbar";
+import { ProfileView } from "../profile-view/profile-view";
 import { LoginView } from "../login-view/login-view";
 import { RegistrationView } from "../registration-view/registration-view";
 import { MovieCard } from "../movie-card/movie-card";

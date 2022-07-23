@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import { FavoriteMovieView } from "./favoritemovies";
 
 import "./profile-view.scss";
 
@@ -94,6 +95,7 @@ export function ProfileView(props) {
       <Row>
         <h3>Profile</h3>
       </Row>
+
       <Form>
         <Form.Group className="mb-3" controlId="username">
           <Form.Label>Username:</Form.Label>
@@ -132,31 +134,33 @@ export function ProfileView(props) {
           />
         </Form.Group>
       </Form>
-      <Button className="mt-2" onClick={handleUpdate}>
-        Update your profile
-      </Button>
-      <Button className="mt-2 ml-4" onClick={handleDelete}>
-        Delete your profile
-      </Button>
-      <h4>Favorite movies:</h4>
-      <Card className="fav-list">
-        <Card.Body>
-          {favoriteMoviesList.map((movie) => {
-            return (
-              <Container>
-                <Col>
-                  <Row>
-                    <img src={movie.ImagePath} alt={movie.Title} />
-                    <Link key={movie._id} to={`/movies/${movie._id}`}>
-                      <h4 key={movie._id}>{movie.Title}</h4>
-                    </Link>
-                  </Row>
-                </Col>
-              </Container>
-            );
-          })}
-        </Card.Body>
-      </Card>
+
+      <Row>
+        <Button className="mt-2 ml-3" onClick={handleUpdate}>
+          Update your profile
+        </Button>
+        <Button className="mt-2 ml-4" onClick={handleDelete}>
+          Delete your profile
+        </Button>
+      </Row>
+      <Row className="mb-3 mt-4">
+        <h4>Favorite movies:</h4>
+      </Row>
+      <Row>
+        {favoriteMoviesList.map((movie) => {
+          return (
+            <Col xs={12} md={6} lg={3} key={movie._id}>
+              <Link key={movie._id} to={`/movies/${movie._id}`}>
+                <Card.Img
+                  className="mb-2"
+                  src={movie.ImagePath}
+                  alt={movie.Title}
+                />
+              </Link>
+            </Col>
+          );
+        })}
+      </Row>
     </Container>
   );
 }

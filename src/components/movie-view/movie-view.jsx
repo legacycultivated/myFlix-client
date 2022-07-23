@@ -6,8 +6,59 @@ import axios from "axios";
 
 import "./movie-view.scss";
 export class MovieView extends React.Component {
+  constructor() {
+    super();
+
+    this.state = {
+      movies: [],
+      user: null,
+    };
+  }
+
+  addMovie(movie, user) {
+    let username = localStorage.getItem("user");
+    let token = localStorage.getItem("token");
+    console.log(movie);
+    console.log(token);
+
+    axios
+      .post(
+        `https://myflix2022.herokuapp.com/users/${username}/movies/${movie._id}`,
+        {},
+        { headers: { Authorization: `Bearer ${token}` } }
+      )
+      .then((response) => {
+        console.log(response.data);
+        alert(`${movie.Title} has been added from your list.`);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }
+
+  delFavMovie = (movie, user) => {
+    let token = localStorage.getItem("token");
+    let username = localStorage.getItem("user");
+    console.log(movie);
+    console.log(token);
+    axios
+      .delete(
+        `https://myflix2022.herokuapp.com/users/${username}/movies/${movie._id}`,
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      )
+      .then((response) => {
+        console.log(response.data);
+        alert(`${movie.Title} has been removed from your list.`);
+      })
+      .catch((e) => {
+        console.log("Error");
+      });
+  };
+
   render() {
-    const { movie, onBackClick } = this.props;
+    const { movie, onBackClick, user } = this.props;
 
     return (
       <Container className="movie-view">
@@ -38,6 +89,22 @@ export class MovieView extends React.Component {
           }}
         >
           Back
+        </Button>
+        <Button
+          className="button ml-2"
+          onClick={() => {
+            this.addMovie(movie, user);
+          }}
+        >
+          Add to favorites
+        </Button>
+        <Button
+          className="button ml-2"
+          onClick={() => {
+            this.delFavMovie(movie, user);
+          }}
+        >
+          Remove from favorites
         </Button>
       </Container>
     );

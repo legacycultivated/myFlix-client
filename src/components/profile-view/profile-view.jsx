@@ -150,7 +150,7 @@ export function ProfileView(props) {
         {favoriteMoviesList.map((movie) => {
           return (
             <Col xs={12} md={6} lg={3} key={movie._id}>
-              <Link key={movie._id} to={`/movies/${movie._id}`}>
+              <Link to={`/movies/${movie._id}`}>
                 <Card.Img
                   className="mb-2"
                   src={movie.ImagePath}

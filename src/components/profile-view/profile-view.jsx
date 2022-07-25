@@ -146,20 +146,18 @@ export function ProfileView(props) {
       <Row className="mb-3 mt-4">
         <h4>Favorite movies:</h4>
       </Row>
-      <Row>
-        {favoriteMoviesList.map((movie) => {
-          <Col xs={12} md={6} lg={3} key={movie._id}>
-            <Link to={`/movies/${movie._id}`}>
-              <Card.Img
-                className="mb-2"
-                src={movie.ImagePath}
-                alt={movie.Title}
-              />
-            </Link>
-          </Col>;
-        })}
-        ;
-      </Row>
+      <Card className="fav-list">
+        <Card.Body>
+          {favoriteMoviesList.map((movie) => {
+            <div key={movie._id}>
+              <img src={movie.ImagePath} alt={movie.Title} />
+              <Link to={`/movies/${movie._id}`}>
+                <h4>{movie.Title}</h4>
+              </Link>
+            </div>;
+          })}
+        </Card.Body>
+      </Card>
     </Container>
   );
 }

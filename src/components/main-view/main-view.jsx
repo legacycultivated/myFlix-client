@@ -121,7 +121,7 @@ export class MainView extends React.Component {
             />
 
             <Route
-              path="/movies/director/:name"
+              path="/director/:name"
               render={({ match, history }) => {
                 if (!user)
                   return (
@@ -145,7 +145,7 @@ export class MainView extends React.Component {
               }}
             />
             <Route
-              path="/movies/genres/:Name"
+              path="/genres/:name"
               render={({ match, history }) => {
                 if (!user)
                   return (

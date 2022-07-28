@@ -40048,6 +40048,7 @@ var _jsxDevRuntime = require("react/jsx-dev-runtime");
 var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
 var _reactBootstrap = require("react-bootstrap");
+var _navbarScss = require("./navbar.scss");
 function Navbar({ user  }) {
     const onLoggedOut = ()=>{
         localStorage.clear();
@@ -40072,14 +40073,14 @@ function Navbar({ user  }) {
                     children: "myFlix2022"
                 }, void 0, false, {
                     fileName: "src/components/navbar/navbar.jsx",
-                    lineNumber: 31,
+                    lineNumber: 33,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Navbar).Toggle, {
                     "aria-controls": "responsive-navbar-nav"
                 }, void 0, false, {
                     fileName: "src/components/navbar/navbar.jsx",
-                    lineNumber: 34,
+                    lineNumber: 36,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Navbar).Collapse, {
@@ -40092,7 +40093,7 @@ function Navbar({ user  }) {
                                 children: "Home"
                             }, void 0, false, {
                                 fileName: "src/components/navbar/navbar.jsx",
-                                lineNumber: 37,
+                                lineNumber: 39,
                                 columnNumber: 26
                             }, this),
                             isAuth() && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Nav).Link, {
@@ -40100,7 +40101,7 @@ function Navbar({ user  }) {
                                 children: user
                             }, void 0, false, {
                                 fileName: "src/components/navbar/navbar.jsx",
-                                lineNumber: 38,
+                                lineNumber: 40,
                                 columnNumber: 26
                             }, this),
                             isAuth() && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Button), {
@@ -40109,7 +40110,7 @@ function Navbar({ user  }) {
                                 children: "Logout"
                             }, void 0, false, {
                                 fileName: "src/components/navbar/navbar.jsx",
-                                lineNumber: 41,
+                                lineNumber: 43,
                                 columnNumber: 15
                             }, this),
                             !isAuth() && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Nav).Link, {
@@ -40117,7 +40118,7 @@ function Navbar({ user  }) {
                                 children: "Sign-in"
                             }, void 0, false, {
                                 fileName: "src/components/navbar/navbar.jsx",
-                                lineNumber: 45,
+                                lineNumber: 47,
                                 columnNumber: 27
                             }, this),
                             !isAuth() && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Nav).Link, {
@@ -40125,29 +40126,29 @@ function Navbar({ user  }) {
                                 children: "Sign-up"
                             }, void 0, false, {
                                 fileName: "src/components/navbar/navbar.jsx",
-                                lineNumber: 46,
+                                lineNumber: 48,
                                 columnNumber: 27
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "src/components/navbar/navbar.jsx",
-                        lineNumber: 36,
+                        lineNumber: 38,
                         columnNumber: 11
                     }, this)
                 }, void 0, false, {
                     fileName: "src/components/navbar/navbar.jsx",
-                    lineNumber: 35,
+                    lineNumber: 37,
                     columnNumber: 9
                 }, this)
             ]
         }, void 0, true, {
             fileName: "src/components/navbar/navbar.jsx",
-            lineNumber: 30,
+            lineNumber: 32,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "src/components/navbar/navbar.jsx",
-        lineNumber: 23,
+        lineNumber: 25,
         columnNumber: 5
     }, this);
 }
@@ -40160,7 +40161,7 @@ $RefreshReg$(_c, "Navbar");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","react-bootstrap":"3AD9A","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"2vVqf":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","react-bootstrap":"3AD9A","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","./navbar.scss":"8wkoA"}],"8wkoA":[function() {},{}],"2vVqf":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$3c12 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;

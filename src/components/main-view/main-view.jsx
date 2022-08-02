@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 
 import { BrowserRouter as Router, Redirect, Route } from "react-router-dom";
 
-import { setMovies } from "..actions/actions.js";
+import { setMovies } from "../../actions/actions.js";
 
 import MoviesList from "../movies-list/movies-list.js";
 

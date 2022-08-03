@@ -42,15 +42,6 @@ export class MovieCard extends React.Component {
           <Link to={`/movies/${movie._id}`}>
             <Button variant="link">Open</Button>
           </Link>
-          <Button
-            className="button ml-2"
-            size="sm"
-            onClick={() => {
-              this.addMovie(movie, user);
-            }}
-          >
-            Add
-          </Button>
         </Card.Body>
       </Card>
     );

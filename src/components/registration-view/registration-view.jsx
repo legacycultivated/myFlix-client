@@ -35,6 +35,7 @@ export function RegistrationView(props) {
         ...values,
         usernameErr: "Username must be 5 characters long",
       });
+      alert("Username must be 5 characters long");
       isReq = false;
     }
     if (!password) {
@@ -45,6 +46,7 @@ export function RegistrationView(props) {
         ...values,
         passwordErr: "Password must be 6 characters long",
       });
+      alert("Password must be 6 characters long");
       isReq = false;
     }
     if (!email) {
@@ -52,6 +54,7 @@ export function RegistrationView(props) {
       isReq = false;
     } else if (email.indexOf("@") === -1) {
       setValues({ ...values, emailErr: "Email is invalid" });
+      alert("Please enter a valid email");
       isReq = false;
     }
     return isReq;

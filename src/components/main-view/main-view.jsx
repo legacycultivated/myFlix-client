@@ -129,7 +129,8 @@ export class MainView extends React.Component {
                       <LoginView onLoggedIn={(user) => this.onLoggedIn(user)} />
                     </Col>
                   );
-                if (movies.length === 0) return <div className="main-view" />;
+                if (movies.length === 0)
+                  return <div className="main-view"></div>;
                 return (
                   <Col md={8}>
                     <DirectorView

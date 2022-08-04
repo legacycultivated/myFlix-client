@@ -2,16 +2,16 @@ import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import { FavoriteMovieView } from "./favoritemovies";
 
 import "./profile-view.scss";
 
 import { Container, Row, Button, Card, Form, Col } from "react-bootstrap";
+import { MovieCard } from "../movie-card/movie-card";
 
 export function ProfileView(props) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [favoriteMovies, setFavoriteMovies] = useState({});
+  const [favoriteMovies, setFavoriteMovies] = useState([]);
   const [email, setEmail] = useState("");
   const [birthday, setBirthday] = useState("");
 
@@ -90,6 +90,29 @@ export function ProfileView(props) {
     getUserData();
   }, []);
 
+  //Render Favorites Function
+  const renderFavorites = () => {
+    console.log(movies);
+    if (movies.length + 0) {
+      return (
+        <Row className="justify-content-md-center">
+          {favoriteMovies.length === 0 ? (
+            <h5>Add some movies to your list</h5>
+          ) : (
+            favoriteMovies.map((movieId, i) => (
+              <Col md={6} lg={4}>
+                <MovieCard
+                  key={`${i}-${movieId}`}
+                  movie={movies.find((m) => m._id == movieId)}
+                />
+              </Col>
+            ))
+          )}
+        </Row>
+      );
+    }
+  };
+
   return (
     <Container>
       <Row>
@@ -146,18 +169,7 @@ export function ProfileView(props) {
       <Row className="mb-3 mt-4">
         <h4>Favorite movies:</h4>
       </Row>
-      <Card className="fav-list">
-        <Card.Body>
-          {favoriteMoviesList.map((movie) => {
-            <div key={movie._id}>
-              <img src={movie.ImagePath} alt={movie.Title} />
-              <Link to={`/movies/${movie._id}`}>
-                <h4>{movie.Title}</h4>
-              </Link>
-            </div>;
-          })}
-        </Card.Body>
-      </Card>
+      {renderFavorites}
     </Container>
   );
 }

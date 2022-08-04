@@ -24,22 +24,21 @@ function FavMovieList({ favMovie }) {
 
   return (
     <div>
-      {movies.map((movie) => {
-        if (favMovie.includes(movie._id))
-          return (
-            <Col md={6}>
-              <Card className="movie-card" key={movie._id}>
-                <Card.Img
-                  className="movie-poster img-fluid"
-                  src={movie.ImagePath}
-                />
-                <Card.Body>
-                  <Card.Title> {movie.Title}</Card.Title>
-                  <Button onClick={() => removeMovie(movie._id)}>Remove</Button>
-                </Card.Body>
-              </Card>
-            </Col>
-          );
+      {favMovie.map((movie) => {
+        return (
+          <Col md={6}>
+            <Card className="movie-card" key={movie._id}>
+              <Card.Img
+                className="movie-poster img-fluid"
+                src={movie.ImagePath}
+              />
+              <Card.Body>
+                <Card.Title> {movie.Title}</Card.Title>
+                <Button onClick={() => removeMovie(movie._id)}>Remove</Button>
+              </Card.Body>
+            </Card>
+          </Col>
+        );
       })}
     </div>
   );

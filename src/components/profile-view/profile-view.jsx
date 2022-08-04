@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import axios from "axios";
 import { Link } from "react-router-dom";
-
+import FavMovieList from "../favorite-movies/favorite-movies";
 import "./profile-view.scss";
 
 import { Container, Row, Button, Card, Form, Col } from "react-bootstrap";
@@ -90,29 +90,6 @@ export function ProfileView(props) {
     getUserData();
   }, []);
 
-  //Render Favorites Function
-  const renderFavorites = () => {
-    console.log(movies);
-    if (movies.length + 0) {
-      return (
-        <Row className="justify-content-md-center">
-          {favoriteMovies.length === 0 ? (
-            <h5>Add some movies to your list</h5>
-          ) : (
-            favoriteMovies.map((movieId, i) => (
-              <Col md={6} lg={4}>
-                <MovieCard
-                  key={`${i}-${movieId}`}
-                  movie={movies.find((m) => m._id == movieId)}
-                />
-              </Col>
-            ))
-          )}
-        </Row>
-      );
-    }
-  };
-
   return (
     <Container>
       <Row>
@@ -169,7 +146,11 @@ export function ProfileView(props) {
       <Row className="mb-3 mt-4">
         <h4>Favorite movies:</h4>
       </Row>
-      {renderFavorites}
+
+      {favoriteMovies &&
+        favoriteMovies.map((movie_id) => (
+          <FavMovieList favMovie={movie_id} key={movie_id} />
+        ))}
     </Container>
   );
 }

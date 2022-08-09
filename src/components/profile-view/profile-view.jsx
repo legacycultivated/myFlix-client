@@ -2,16 +2,13 @@ import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import FavMovieList from "../favorite-movies/favorite-movies";
 import "./profile-view.scss";
 
 import { Container, Row, Button, Card, Form, Col } from "react-bootstrap";
-import { MovieCard } from "../movie-card/movie-card";
 
 export function ProfileView(props) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [favMovie, setfavMovie] = useState([]);
   const [email, setEmail] = useState("");
   const [birthday, setBirthday] = useState("");
 
@@ -19,6 +16,7 @@ export function ProfileView(props) {
   const [movies, setMovies] = useState([]);
   const User = localStorage.getItem("user");
   const token = localStorage.getItem("token");
+  const [favoriteMoviesList, setFavoriteMoviesList] = useState([]);
 
   const getUserData = () => {
     let user = localStorage.getItem("user");
@@ -144,10 +142,18 @@ export function ProfileView(props) {
       </Row>
       <Row className="mb-3 mt-4">
         <h4>Favorite movies:</h4>
-        {favMovie &&
-          favMovie.map((movie_id) => (
-            <FavMovieList favMovie={movie_id} key={movie_id} />
-          ))}
+        <Card>
+          <Card.Body>
+            {favoriteMoviesList.map((movie) => {
+              <div key={movie._id}>
+                <img src={movie.ImagePath} alt={movie.Title} />
+                <Link to={`/movies/${movie._id}`}>
+                  <h4>{movie.Title}</h4>
+                </Link>
+              </div>;
+            })}
+          </Card.Body>
+        </Card>
       </Row>
     </Container>
   );

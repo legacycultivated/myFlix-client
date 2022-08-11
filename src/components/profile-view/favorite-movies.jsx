@@ -14,24 +14,24 @@ export function FavoriteMovies(props) {
     return favoriteMovies.includes(m._id);
   });
 
-  const handleDelete = (movie, user) => {
+  const handleDelete = (movieId) => {
     let token = localStorage.getItem("token");
     let username = localStorage.getItem("user");
-    console.log(movie);
     console.log(token);
     axios
       .delete(
-        `https://myflix2022.herokuapp.com/users/${username}/movies/${movie._id}`,
+        `https://myflix2022.herokuapp.com/users/${username}/movies/${movieId}`,
         {
           headers: { Authorization: `Bearer ${token}` },
         }
       )
       .then((response) => {
         console.log(response.data);
-        alert(`${movie.Title} has been removed from your list.`);
+        alert(`Movie has been removed from your list.`);
       })
       .catch((e) => {
         console.log("Error");
+        alert(`Movie has been removed from your list.`);
       });
   };
   return (

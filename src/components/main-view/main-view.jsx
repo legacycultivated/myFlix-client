@@ -2,7 +2,7 @@ import React from "react";
 import axios from "axios";
 import { BrowserRouter as Router, Redirect, Route } from "react-router-dom";
 
-import { Navbar } from "../navbar/navbar";
+import Navbar from "../navbar/navbar";
 import { ProfileView } from "../profile-view/profile-view";
 import { DirectorView } from "../director-view/director-view";
 import { GenreView } from "../genre-view/genre-view";

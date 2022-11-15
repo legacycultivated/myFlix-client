@@ -9,7 +9,7 @@ import { setMovies } from "../../actions/actions.js";
 
 import MoviesList from "../movies-list/movies-list.jsx";
 
-import { Navbar } from "../navbar/navbar";
+import Navbar from "../navbar/navbar";
 import { ProfileView } from "../profile-view/profile-view";
 import { DirectorView } from "../director-view/director-view";
 import { GenreView } from "../genre-view/genre-view";
